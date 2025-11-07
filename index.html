@@ -1,0 +1,412 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENSTA - École nationale supérieure des technologies avancées</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style id="app-style">
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .hero {
+      height: 100vh;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imeges/school_photo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .navbar {
+      transition: background-color 0.3s ease;
+    }
+    
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section {
+      padding: 6rem 0;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <body>
+  <!-- Navigation -->
+  <nav class="navbar fixed w-full bg-transparent z-50">
+    <div class="container mx-auto px-6 py-3 flex justify-end items-center space-x-4">
+
+      <!-- Contacts Button -->
+      <button id="contact-btn" class="px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 transition">
+        Contacts
+      </button>
+
+      <!-- Location Button -->
+      <button id="location-btn" class="px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 transition">
+        Location
+      </button>
+
+    </div>
+  </nav>
+
+  <script>
+    const locationBtn = document.getElementById("location-btn");
+
+    locationBtn.addEventListener("click", () => {
+      // فتح نافذة جديدة تحتوي على الموقعين
+      const myWindow = window.open("", "_blank", "width=600,height=600");
+      myWindow.document.write(`
+        <html>
+          <head>
+            <title>ENSTA Locations</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 20px;
+                background-color: #1a1a2e; /* dark background for night mode */
+                color: white;
+              }
+              a {
+                color: white; /* night blue color */
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+              }
+              a:hover {
+                text-decoration: underline;
+              }
+            </style>
+          </head>
+          <body>
+            <h2>ENSTA Locations</h2>
+            <p><a href="https://maps.app.goo.gl/3mjHMib7mrSuDAsaA?g_st=ipc" target="_blank">ENSTA Bab Al Ouad</a></p>
+            <p><a href="https://maps.app.goo.gl/cXnKStSbacd4KkGB6?g_st=ipc" target="_blank">ENSTA Dergana</a></p>
+          </body>
+        </html>
+      `);
+    });
+  </script>
+</body>
+
+
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="contact-modal">
+    <div class="modal-content">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-semibold">Contact Us</h3>
+        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-center">
+          <i class="fas fa-phone text-blue-600 mr-3 text-xl"></i>
+          <p>+213 (0)23 79 71 18
+             +213 (0)44 12 11 03
+          </p>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-envelope text-blue-600 mr-3 text-xl"></i>
+          <p>contact@ensta.edu.dz</p>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-facebook text-blue-600 mr-3 text-xl"></i>
+          <a href="https://www.facebook.com/share/17eM7Rq5LN/?mibextid=wwXIfr" target="_blank" class="text-blue-600 hover:underline">facebook.com/ENSTA.Alger</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero flex items-center justify-center">
+   <div class="text-center text-white drop-shadow-lg">
+    <h1 class="text-7xl md:text-8xl font-extrabold bg-gradient-to-r from-blue-300 via-white to-blue-300 
+       bg-clip-text text-transparent drop-shadow-xl tracking-widest 
+       transform rotate-rotate-[-10deg] mb-4">
+  ENSTA
+    </h1>  
+    <h2 class="text-3xl md:text-4xl font-semibold mb-6 italic">
+    École nationale supérieure des technologies avancées
+  </h2>
+
+  <p class="text-2xl md:text-3xl font-light bg-black bg-opacity-30 px-4 py-2 rounded-lg inline-block">
+    Innovating the Future
+  </p>
+</div>
+
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-semibold text-center mb-6" style="color: #0d47a1;">About ENSTA</h2>
+        <p class="text-gray-700 leading-relaxed">
+         <strong>The National Higher School of Advanced Technologies (ENSTA)</strong> : is a prestigious Algerian institution that combines innovation, engineering, and scientific research in cutting-edge technological fields.
+Founded in 2022 through the merger of two renowned schools, ENSTA trains highly qualified engineers and researchers ready to shape the future of Algeria’s technological development.
+The school offers two main fields of study:
+
+Science and Technology, covering specializations such as electronics, mechanics, automation, and industrial engineering.
+
+Computer Science, including programs in  artificial intelligence and cyber security.
+
+As a national center of excellence, ENSTA promotes creativity, entrepreneurship, and applied research to meet the needs of the modern economy and drive innovation across industries. 
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Math and Informatics Section -->
+  <section id="math-informatics" class="section bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title font-semibold text-center mb-8 text-[#0d47a1]">Math and Informatics</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- AI Card -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6 text-center">
+            <div class="w-24 h-24 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+              <img src="imeges/ai.jpg" alt="AI Image" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-2xl font-semibold mb-3">Artificial Intelligence</h3>
+            <p class="text-gray-600 leading-relaxed">
+             The Artificial Intelligence program focuses on designing intelligent systems, covering machine learning, neural networks, data analysis, and AI applications to solve real-world problems.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Cyber Security Card -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6 text-center">
+            <div class="w-24 h-24 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+              <img src="imeges/cs.jpg" alt="AI Image" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-2xl font-semibold mb-3">System Security</h3>
+            <p class="text-gray-600 leading-relaxed">
+              The System Security program trains students to protect information systems from threats, covering cryptography, network security, secure programming, and defense strategies. Graduates can design and maintain secure systems for both public and private sectors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section>
+  <h2 class="section-title font-semibold text-center mb-8 text-[#0d47a1]">ST Domain</h2>
+
+  <div id="st-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+</section>
+
+<script>
+  const specialties = [
+    {
+      name: "Energy Mechanics",
+      new: true,
+      domain: "ST",
+      desc: "Study and optimization of thermal energy systems.",
+      img: "imeges/st_domain/mecanique-energetique.jpg"
+    },
+    {
+      name: "Renewable Energy and Energy Storage",
+      new: true,
+      domain: "ST",
+      desc: "Design of solutions based on green energies.",
+      img: "imeges/st_domain/energie renouvlabe.jpg"
+    },
+    {
+      name: "Telecommunication and Network Systems",
+      domain: "ST",
+      desc: "Study and design of communication networks.",
+      img: "imeges/st_domain/systeme et telecome et reseau.jpg"
+    },
+    {
+      name: "Automation and Industrial Computing",
+      domain: "ST",
+      desc: "Automatic control and industrial integration.",
+      img: "imeges/st_domain/automatique et informatique industrial.webp"
+    },
+    {
+      name: "Industrial Management and Maintenance",
+      domain: "ST",
+      desc: "Equipment management and maintenance optimization.",
+      img: "imeges/st_domain/Management et Maintenance Industrielle.png"
+    },
+    {
+      name: "Embedded Systems",
+      domain: "ST",
+      desc: "Design of integrated electronic systems.",
+      img: "imeges/st_domain/sys_embarque.jpg"
+    },
+    {
+      name: "Mechatronics",
+      domain: "ST",
+      desc: "Integration of mechanics, electronics, and control.",
+      img: "imeges/st_domain/mecatronique.jpg"
+    },
+    {
+      name: "Industrial Engineering",
+      domain: "ST",
+      desc: "Optimization of production chains and processes.",
+      img: "imeges/st_domain/Génie Industriel.jpg"
+    },
+    {
+      name: "Supply Chain Engineering",
+      domain: "ST",
+      desc: "Management and optimization of logistical flows.",
+      img: "imeges/st_domain/Ingénierie de la Chaîne Logistique.jpg"
+    },
+    {
+      name: "Transportation Engineering",
+      domain: "ST",
+      desc: "Transport systems, infrastructure, and mobility.",
+      img: "imeges/st_domain/genie de transport .jpg"
+    },
+    {
+      name: "Mechanical Engineering",
+      domain: "ST",
+      desc: "Design and analysis of mechanical systems.",
+      img: "imeges/st_domain/Ingénierie Mécanique.jpg"
+    },
+    {
+      name: "Water Treatment",
+      domain: "ST",
+      desc: "Techniques for purification and water resource management.",
+      img: "imeges/st_domain/water-treatment.jpg"
+    },
+    {
+      name: "Organic Processes",
+      domain: "ST",
+      desc: "Chemical transformation and process design.",
+      img: "imeges/st_domain/Procédés Organiques.jpg"
+    },
+    {
+      name: "Electric Traction",
+      domain: "ST",
+      desc: "Study of electric propulsion systems.",
+      img: "imeges/st_domain/Traction Electrique.jpg"
+    }
+  ];
+
+  const container = document.getElementById("st-container");
+
+  specialties.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-lg shadow p-4";
+
+    card.innerHTML = `
+      <img src="${s.img}" alt="${s.name}" class="w-full h-32 object-cover rounded-md mb-2">
+      <h3 class="text-lg font-bold">${s.name}</h3>
+      ${s.new ? `<p class="text-red-600 font-semibold">New 2025-2026</p>` : ""}
+      <p class="text-gray-500 mb-2">Domain ${s.domain}</p>
+      <p class="text-gray-700 text-sm">${s.desc}</p>
+    `;
+
+    container.appendChild(card);
+  });
+</script>
+
+
+        
+        
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold">ENSTA</h3>
+          <p class="text-gray-400">École nationale supérieure des technologies avancées</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="javascript:void(0)" class="hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+          <a href="javascript:void(0)" class="hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+          <a href="javascript:void(0)" class="hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="javascript:void(0)" class="hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <hr class="my-6 border-gray-700">
+      <p class="text-center text-gray-400">© 2025 ENSTA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script id="app-script">
+    // Handle contact modal
+    const contactBtn = document.getElementById('contact-btn');
+    const contactModal = document.getElementById('contact-modal');
+    const closeModal = document.getElementById('close-modal');
+    
+    contactBtn.addEventListener('click', function() {
+      contactModal.style.display = 'flex';
+    });
+    
+    closeModal.addEventListener('click', function() {
+      contactModal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(event) {
+      if (event.target === contactModal) {
+        contactModal.style.display = 'none';
+      }
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-lg');
+      } else {
+        navbar.classList.remove('shadow-lg');
+      }
+    });
+  </script>
+</body>
+</html>
